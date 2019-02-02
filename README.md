@@ -86,6 +86,30 @@ cache.put('urls', await urls(), 3600 * 1000);
 
 The server will cache all comics for 1 hour
 
+## Deploy
+
+```text
+# One time setup
+heroku login
+heroku create
+heroku buildpacks:set heroku/nodejs
+
+# Add/update the following files
+app.json
+Procfile
+Listen to $PORT
+
+# One time client setup
+Update client w/ Heroku instance
+
+# Deploy server to Heroku
+git subtree push --prefix server heroku master
+
+# Deploy client to Netlify
+git push origin master
+
+```
+
 ## Contributing
 
 Contribute by opening a PR or an issue on Github.
