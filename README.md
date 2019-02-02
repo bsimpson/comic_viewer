@@ -7,7 +7,7 @@ Its 2019 - I'm a Javascript developer - this is something I can fix.
 
 ## Overview
 
-![Screenshot](./Screenshot_2019-02-02 Comic Viewer.png)
+![Screenshot](https://raw.githubusercontent.com/bsimpson/comic_viewer/master/Screenshot_2019-02-02%20Comic%20Viewer.png)
 
 Comics are listed in a menu on the left, and shown on the right.
 
