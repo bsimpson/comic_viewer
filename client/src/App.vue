@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted () {
-    fetch('http://localhost:3000/comics.json').then((res) => {
+    fetch('https://boiling-fortress-45509.herokuapp.com/comics.json').then((res) => {
       res.json().then((json) => {
         this.feeds = json;
         this.focusedFeed = this.feeds[Object.keys(this.feeds)[0]];
