@@ -1,8 +1,10 @@
 <template>
   <div class="nav flex-column nav-pills bg-dark" role="tablist">
     <div class="text-light p-2"
-      v-if="loading">Loading...</div>
+      v-if="loading">Loading...
+    </div>
     <a href="#"
+       :key="key"
        v-for="key in Object.keys(feeds)"
        v-on:click="handleNav(key)"
        :class="{ active: isActive(key) }"
