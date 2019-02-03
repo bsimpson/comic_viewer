@@ -13,7 +13,7 @@
               :disabled="index <= 0"
               v-on:click.stop="index -= 1"
       >
-        <
+        &lt;
       </button>
 
       <div class="col"
@@ -30,7 +30,7 @@
       <button class="col-1 btn"
               :disabled="index >= (feed.items.length - 1)"
               v-on:click.stop="index += 1">
-        >
+        &gt;
       </button>
     </div>
   </div>
@@ -65,7 +65,7 @@ export default {
       if (evt.keyCode == 39) {
         this.index = Math.min(this.feed.items.length - 1, this.index + 1);
       }
-    })
+    });
   }
 }
 </script>
