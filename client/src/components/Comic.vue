@@ -9,9 +9,9 @@
 
     <div class="row">
       <button
-              class="col-1 btn"
+              class="d-none d-md-block col-1 btn"
               :disabled="index <= 0"
-              v-on:click.stop="index -= 1"
+              v-on:click.stop="previous"
       >
         &lt;
       </button>
@@ -22,14 +22,15 @@
       </div>
 
       <div class="col"
-              v-if="!loading"
-              v-html="item && item.content"
+           v-touch:swipe="handleSwipe"
+           v-if="!loading"
+           v-html="item && item.content"
       >
       </div>
 
-      <button class="col-1 btn"
+      <button class="d-none d-md-block col-1 btn"
               :disabled="index >= (feed.items.length - 1)"
-              v-on:click.stop="index += 1">
+              v-on:click.stop="next">
         &gt;
       </button>
     </div>
@@ -59,16 +60,29 @@ export default {
   mounted() {
     window.addEventListener('keydown', (evt) => {
       if (evt.keyCode == 37) {
-        this.index = Math.max(0, this.index - 1);
-      }
-
-      if (evt.keyCode == 39) {
-        this.index = Math.min(this.feed.items.length - 1, this.index + 1);
+        this.previous();
+      } else if (evt.keyCode == 39) {
+        this.next();
       }
     });
   },
+  methods: {
+    handleSwipe(event) {
+      if (event === 'left') {
+        this.next();
+      } else if (event === 'right') {
+        this.previous();
+      }
+    },
+    next() {
+      this.index = Math.min(this.feed.items.length - 1, this.index + 1);
+    },
+    previous() {
+      this.index = Math.max(0, this.index - 1);
+    }
+  },
   watch: {
-    feed(_) {
+    feed() {
       this.index = 0;
     }
   },

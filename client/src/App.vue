@@ -1,13 +1,13 @@
 <template>
-  <div id="app" class="container">
-    <div class="row pt-5 mb-5">
-      <div class="col-sm-12 col-md-4 col-lg-4">
+  <div id="app" class="container-fluid">
+    <div class="row pt-5 mb-5 justify-content-md-center">
+      <div class="col-12 col-md-4">
         <Sidebar
           v-on:focusComic="handleFocus"
           :feeds="feeds"
         ></Sidebar>
       </div>
-      <div class="col-sm-12 col-md-8 col-lg-8">
+      <div class="col-12 col-md-8">
         <Comic
                 :feed="focusedFeed"
         ></Comic>
