@@ -66,7 +66,12 @@ export default {
         this.index = Math.min(this.feed.items.length - 1, this.index + 1);
       }
     });
-  }
+  },
+  watch: {
+    feed(_) {
+      this.index = 0;
+    }
+  },
 }
 </script>
 
