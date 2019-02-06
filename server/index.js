@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const {urls} = require('./adapters/manifest');
 const cache = require('memory-cache');
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000;
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

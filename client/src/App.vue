@@ -33,10 +33,11 @@ export default {
         title: '',
         items: [],
       },
+      feedUrl: process.env.VUE_APP_FEED_URL,
     }
   },
   mounted () {
-    fetch('https://boiling-fortress-45509.herokuapp.com/comics.json').then((res) => {
+    fetch(this.feedUrl).then((res) => {
       res.json().then((json) => {
         this.feeds = json;
         this.focusedFeed = this.feeds[Object.keys(this.feeds)[0]];

@@ -5,6 +5,7 @@ const penny = require('./penny');
 const qwantz = require('./qwantz');
 const smbc = require('./smbc');
 const xkcd = require('./xkcd');
+const mrlovenstein = require('./mrlovenstein');
 
 async function urls() {
   return {
@@ -15,6 +16,7 @@ async function urls() {
     qwantz: await qwantz.load().catch(console.err),
     smbc: await smbc.load().catch(console.err),
     xkcd: await xkcd.load().catch(console.err),
+    mrlovenstein: await mrlovenstein.load().catch(console.err),
   }
 }
 
