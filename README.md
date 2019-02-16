@@ -5,7 +5,7 @@ Turn web comics up to 11!
 I got tired of RSS feeds that just linked out to the comic.
 Its 2019 - I'm a Javascript developer - this is something I can fix.
 
-# Live
+# Live Demo
 
 [Comic Viewer](https://cocky-bhaskara-7e97ab.netlify.com)
 
@@ -112,6 +112,45 @@ git subtree push --prefix server heroku master
 # Deploy client to Netlify
 git push origin master
 
+```
+
+## Running Locally
+
+The codebase has a client and a server. These are subdirectories
+in the root folder.
+
+.nvmrc files will set the correct version when you run commands
+in the client/ or server/ directories:
+
+```
+nvm use
+```
+
+### Client
+
+Note: The client supports live-reloading
+
+```
+cd client/
+npm run serve
+```
+
+Open a browser to [http://localhost:8080](http://localhost:8080)
+
+### Server
+
+Note: The server does NOT support live-reloading
+
+```
+cd server/
+nvm run start
+```
+
+Open browser to [http://localhost:3000/comics.json](http://localhost:3000/comics.json)
+
+Or with curl and jq:
+```
+curl http://localhost:3000/comics.json | jq
 ```
 
 ## Contributing
