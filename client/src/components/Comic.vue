@@ -18,7 +18,7 @@
 
       <div class="col"
            v-if="loading">
-        <div class="text-center">Loading...</div>
+        <div class="text-center"><img src="spinner.gif" /></div>
       </div>
 
       <div class="col"
@@ -79,7 +79,7 @@ export default {
     },
     previous() {
       this.index = Math.max(0, this.index - 1);
-    }
+    },
   },
   watch: {
     feed() {
