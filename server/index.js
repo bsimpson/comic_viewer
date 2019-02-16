@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {urls} = require('./adapters/manifest');
+const {url, manifest} = require('./adapters/manifest');
 const cache = require('memory-cache');
 const PORT = process.env.PORT || 3000;
 
@@ -10,13 +10,19 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/comics.json', async (req, res) => {
-  if (!cache.get('urls')) {
-    cache.put('urls', await urls(), 3600 * 1000);
+app.get('/comics/:comic.json', async (req, res) => {
+  const {comic} = req.params;
+
+  if (!cache.get(`urls_${comic}`)) {
+    cache.put(`urls_${comic}`, await url(comic), 3600 * 1000);
   }
 
-  res.send(cache.get('urls'));
+  res.send(cache.get(`urls_${comic}`));
 });
+
+app.get('/manifest.json', async(req, res) => {
+  res.send(Object.keys(manifest()));
+})
 
 app.listen(PORT, () => {
   console.log('Starting server on localhost:3000');

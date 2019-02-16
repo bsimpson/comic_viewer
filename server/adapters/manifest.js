@@ -9,23 +9,30 @@ const mrlovenstein = require('./mrlovenstein');
 const lunarbaboon = require('./lunarbaboon');
 const pbf = require('./pbf');
 const oddball = require('./oddball');
+const donthitsave = require('./donthitsave');
 
-async function urls() {
+async function url(comic) {
+  return await manifest()[comic].load();
+}
+
+function manifest() {
   return {
-    dilbert: await dilbert.load().catch(console.err),
-    explosm: await explosm.load().catch(console.err),
-    oatmeal: await oatmeal.load().catch(console.err),
-    penny: await penny.load().catch(console.err),
-    qwantz: await qwantz.load().catch(console.err),
-    smbc: await smbc.load().catch(console.err),
-    xkcd: await xkcd.load().catch(console.err),
-    mrlovenstein: await mrlovenstein.load().catch(console.err),
-    lunarbaboon: await lunarbaboon.load().catch(console.err),
-    pbf: await pbf.load().catch(console.err),
-    oddball: await oddball.load().catch(console.err),
-  }
+    dilbert,
+    explosm,
+    oatmeal,
+    penny,
+    qwantz,
+    smbc,
+    xkcd,
+    mrlovenstein,
+    lunarbaboon,
+    pbf,
+    oddball,
+    donthitsave,
+  };
 }
 
 module.exports = {
-  urls,
+  url,
+  manifest,
 };

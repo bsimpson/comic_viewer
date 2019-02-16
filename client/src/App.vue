@@ -19,6 +19,8 @@
 <script>
 import Comic from './components/Comic.vue';
 import Sidebar from './components/Sidebar.vue';
+import { ajax } from 'rxjs/ajax';
+import { map, flatMap, concatMap } from 'rxjs/operators';
 
 export default {
   name: 'app',
@@ -28,20 +30,36 @@ export default {
   },
   data: () => {
     return {
-      feeds: [],
+      feeds: {},
       focusedFeed: {
         title: '',
         items: [],
       },
+      manifestUrl: process.env.VUE_APP_MANIFEST_URL,
       feedUrl: process.env.VUE_APP_FEED_URL,
     }
   },
   mounted () {
-    fetch(this.feedUrl).then((res) => {
-      res.json().then((json) => {
-        this.feeds = json;
-        this.focusedFeed = this.feeds[Object.keys(this.feeds)[0]];
-      })
+    ajax.getJSON(this.manifestUrl)
+      .pipe(
+        flatMap(comics => comics),
+        concatMap(comic => {
+          const url = this.feedUrl.slice().replace(/%NAME%/, comic);
+          return ajax.getJSON(url).pipe(
+            map(data => {
+              return { comic, data };
+            }),
+          );
+        }),
+      ).subscribe(next => {
+        const {comic, data} = next;
+        const feed = {};
+        feed[comic] = data;
+        this.feeds = Object.assign({}, this.feeds, feed);
+
+        if(this.focusedFeed.items.length <= 0) {
+          this.focusedFeed = this.feeds[comic];
+        }
     });
   },
   methods: {
