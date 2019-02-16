@@ -7,6 +7,7 @@ const smbc = require('./smbc');
 const xkcd = require('./xkcd');
 const mrlovenstein = require('./mrlovenstein');
 const lunarbaboon = require('./lunarbaboon');
+const pbf = require('./pbf');
 
 async function urls() {
   return {
@@ -19,6 +20,7 @@ async function urls() {
     xkcd: await xkcd.load().catch(console.err),
     mrlovenstein: await mrlovenstein.load().catch(console.err),
     lunarbaboon: await lunarbaboon.load().catch(console.err),
+    pbf: await pbf.load().catch(console.err),
   }
 }
 
