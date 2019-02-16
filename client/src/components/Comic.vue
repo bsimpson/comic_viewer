@@ -18,7 +18,7 @@
 
       <div class="col"
            v-if="loading">
-        <div class="text-center"><img src="spinner.gif" /></div>
+        <div class="text-center"><img src="../assets/spinner.gif" /></div>
       </div>
 
       <div class="col"
