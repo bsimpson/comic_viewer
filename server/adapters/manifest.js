@@ -10,6 +10,9 @@ const lunarbaboon = require('./lunarbaboon');
 const pbf = require('./pbf');
 const oddball = require('./oddball');
 const donthitsave = require('./donthitsave');
+const extrafabulous = require('./extrafabulous');
+const onegianthand = require('./onegianthand');
+const sephko = require('./sephko');
 
 async function url(comic) {
   return await manifest()[comic].load();
@@ -29,6 +32,9 @@ function manifest() {
     pbf,
     oddball,
     donthitsave,
+    extrafabulous,
+    onegianthand,
+    sephko,
   };
 }
 
