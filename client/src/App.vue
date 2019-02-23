@@ -1,19 +1,52 @@
 <template>
-  <div id="app" class="container-fluid">
-    <div class="row pt-5 mb-5 justify-content-md-center">
-      <div class="col-12 col-md-4">
-        <Sidebar
-          v-on:focusComic="handleFocus"
-          :feeds="feeds"
-        ></Sidebar>
+  <main>
+    <header class="fixed-top">
+      <div class="row">
+        <div class="col">
+          <h1 class="text-center bg-dark text-light p-3 border-bottom border-light d-none d-md-block">
+            Web Comic Viewer
+          </h1>
+          <h5 class="bg-dark text-light p-1 border-bottom border-light d-block d-md-none">
+            <Sidebar
+                    v-on:focusComic="handleFocus"
+                    :feeds="feeds"
+            >
+              <div class="row">
+                <span class="text-light text-left col-1">
+                  ☰
+                </span>
+                <span class="col-10 text-center">
+                  Web Comic Viewer
+                </span>
+
+              </div>
+
+            </Sidebar>
+          </h5>
+        </div>
       </div>
-      <div class="col-12 col-md-8">
-        <Comic
-                :feed="focusedFeed"
-        ></Comic>
+    </header>
+
+    <noscript>
+      <strong>We're sorry but Comic Viewer doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+
+    <div id="app" class="container-fluid">
+      <div class="row pt-5 mb-5 justify-content-md-center">
+        <div class="col-12 col-md-4">
+          <Sidebar
+                  v-on:focusComic="handleFocus"
+                  :feeds="feeds"
+          ></Sidebar>
+        </div>
+        <div class="col-12 col-md-8">
+          <Comic
+                  :feed="focusedFeed"
+          ></Comic>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

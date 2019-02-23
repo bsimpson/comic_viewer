@@ -123,7 +123,7 @@ in the root folder.
 in the client/ or server/ directories:
 
 ```
-nvm use
+nvm use # inside either client/ or server/
 ```
 
 ### Client
@@ -132,6 +132,7 @@ Note: The client supports live-reloading
 
 ```
 cd client/
+nvm use
 npm run serve
 ```
 
@@ -143,7 +144,8 @@ Note: The server does NOT support live-reloading
 
 ```
 cd server/
-nvm run start
+nvm use
+npm run start
 ```
 
 Open browser to [http://localhost:3000/comics.json](http://localhost:3000/comics.json)
