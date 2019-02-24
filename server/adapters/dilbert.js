@@ -8,7 +8,7 @@ module.exports = {
   load: async () => {
     const parsedFeed = await utils.parseFeed(URL);
 
-    parsedFeed.items.map(async (item) => {
+    return Promise.all(parsedFeed.items.map(async (item) => {
       const response = await axios.get(item.link);
       const $ = cheerio.load(response.data);
 
@@ -17,8 +17,6 @@ module.exports = {
       item.content = $('.img-comic-link').html();
 
       return item;
-    });
-
-    return parsedFeed;
+    })).then(() => parsedFeed);
   }
 };
