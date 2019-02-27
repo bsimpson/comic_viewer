@@ -1,6 +1,6 @@
 <template>
   <main>
-    <header class="fixed-top">
+    <header class="position-absolute pb-4">
       <div class="row">
         <div class="col">
           <h1 class="text-center bg-dark text-light p-3 border-bottom border-light d-none d-md-block">
@@ -107,5 +107,15 @@ export default {
 #app {
   text-align: center;
   margin: 80px 0;
+}
+
+header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: hidden;
 }
 </style>
