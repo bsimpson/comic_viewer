@@ -9,9 +9,9 @@ module.exports = {
 
     parsedFeed.items.map((item) => {
       const $ = cheerio.load(item['content:encoded']);
-      $('p img').addClass('img-fluid');
+      $('img').addClass('img-fluid');
 
-      item.content = $('a').html();
+      item.content = $('a').html() || $('figure').html();
 
       return item;
     });
