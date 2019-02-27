@@ -22,7 +22,7 @@ app.get('/comics/:comic.json', async (req, res) => {
 
 app.get('/manifest.json', async(req, res) => {
   res.send(Object.keys(manifest()));
-})
+});
 
 app.listen(PORT, () => {
   console.log('Starting server on localhost:3000');

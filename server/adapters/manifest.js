@@ -14,6 +14,7 @@ const extrafabulous = require('./extrafabulous');
 const onegianthand = require('./onegianthand');
 const sephko = require('./sephko');
 const mikeorganisciak = require('./mikeorganisciak');
+const sarahandersen = require('./sarahandersen');
 
 async function url(comic) {
   return await manifest()[comic].load();
@@ -37,6 +38,7 @@ function manifest() {
     onegianthand,
     sephko,
     mikeorganisciak,
+    sarahandersen,
   };
 }
 
